@@ -42,3 +42,4 @@ sudo cp /vagrant/default /tftpboot/pxelinux.cfg/default
 
 #Configure DHCPd
 sudo cp /vagrant/dhcpd.conf /etc/dhcp/dhcpd.conf
+sudo service isc-dhcp-server restart

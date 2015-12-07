@@ -42,7 +42,7 @@ Vagrant.configure(2) do |config|
 
   # Provision dependencies for Hanlon
   config.vm.provision :shell, path: "install-rvm.sh", args: "stable", privileged: false
-  config.vm.provision :shell, path: "install-ruby.sh", args: "2.2.3 bundler", privileged: false
+  config.vm.provision :shell, path: "install-ruby.sh", args: "2.2.3 bundler bson_ext", privileged: false
   config.vm.provision :shell, path: "install-dependencies.sh", privileged: false
   config.vm.provision :shell, path: "install-hanlon.sh", privileged: false
 end
