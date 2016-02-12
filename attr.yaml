@@ -1,0 +1,3 @@
+hostname_prefix: srv
+domainname: dom.bogus
+root_password: passw0rd

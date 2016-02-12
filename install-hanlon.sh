@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+echo "Running: install-hanlon.sh"
 # Download and init Hanlon code from gitub (master/HEAD)
 sudo mkdir /opt/hanlon
 cd /opt/hanlon

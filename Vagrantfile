@@ -17,12 +17,14 @@ Vagrant.configure(2) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network 'forwarded_port', :guest => 80, :host => 8080
   # config.vm.network "forwarded_port", guest: 80, host: 8080
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network 'private_network', ip: '10.142.142.101'
+  # config.vm.network 'private_network', :ip => '10.142.142.101'
+  config.vm.network "public_network", :ip => '10.142.142.101'
+  config.vm.hostname = 'hanlon'
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -41,8 +43,9 @@ Vagrant.configure(2) do |config|
   end
 
   # Provision dependencies for Hanlon
-  config.vm.provision :shell, path: "install-rvm.sh", args: "stable", privileged: false
-  config.vm.provision :shell, path: "install-ruby.sh", args: "2.2.3 bundler bson_ext", privileged: false
-  config.vm.provision :shell, path: "install-dependencies.sh", privileged: false
-  config.vm.provision :shell, path: "install-hanlon.sh", privileged: false
+  config.vm.provision :shell, :path => 'install-rvm.sh', :args => 'stable', :privileged => false
+  config.vm.provision :shell, :path => 'install-ruby.sh', :args => '2.2.3 bundler bson_ext', :privileged => false
+  config.vm.provision :shell, :path => 'install-dependencies.sh', :privileged => false
+  config.vm.provision :shell, :path => 'install-hanlon.sh', :privileged => false
+  config.vm.provision :shell, :path => 'create-policy.sh', :privileged => false
 end

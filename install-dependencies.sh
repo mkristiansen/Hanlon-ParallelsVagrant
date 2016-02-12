@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+echo "Running: install-dependencies.sh"
+
 sudo apt-get update
 sudo apt-get install -y curl lbzip2 libbz2-dev libpq-dev
 

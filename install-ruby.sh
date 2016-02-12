@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+echo "Running: install-ruby.sh"
  source $HOME/.rvm/scripts/rvm
 
  rvm use --default --install $1
