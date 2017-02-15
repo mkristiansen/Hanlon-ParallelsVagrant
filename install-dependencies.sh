@@ -1,19 +1,28 @@
 #!/usr/bin/env bash
-echo "Running: install-dependencies.sh"
+echo "[INFO] Running: install-dependencies.sh"
 
 sudo apt-get update
 sudo apt-get install -y curl lbzip2 libbz2-dev libpq-dev
 
+echo "[INFO] Installing: MongDB"
 sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv 7F0CEB10
 sudo echo "deb http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
 sudo apt-get update
 sudo apt-get install -y mongodb-org
+sudo cp /vagrant/mongod.service /lib/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable mongod
+sudo systemctl start mongod
 
+echo "[INFO] Installing: Docker Engine"
 sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 sudo echo "deb https://apt.dockerproject.org/repo ubuntu-precise main" | sudo tee /etc/apt/sources.list.d/docker.list
 sudo apt-get update
 sudo apt-get install -y docker-engine
+# Start docker-engine
+sudo systemctl start docker
 
+echo "[INFO] Installing: DHCP, TFT and iPXE Services"
 sudo apt-get install -y isc-dhcp-server ipxe tftp tftpd
 
 #Configure tftpd

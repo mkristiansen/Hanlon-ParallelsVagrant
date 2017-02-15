@@ -12,8 +12,8 @@ bundle install
 web/run-puma.sh &
 
 # Download Microkernel and Rancher OS Images
-sudo docker pull cscdock/hanlon-microkernel:3.0.0
-sudo docker save cscdock/hanlon-microkernel:3.0.0 > cscdock-mk-image.tar
+sudo docker pull cscdock/hanlon-microkernel:3.0.1
+sudo docker save cscdock/hanlon-microkernel:3.0.1 > cscdock-mk-image.tar
 bzip2 -c cscdock-mk-image.tar > /tmp/cscdock-mk-image.tar.bzip2
 rm -rf cscdock-mk-image.tar
 ssh-keygen -t rsa -N hanlon -C "RSA key for password authentication to microkernel" -f hanlonkey
